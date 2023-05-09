@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.config.Projection;
 
 @Projection(name = "full-customer", types = Customer.class)
 public interface CustomerProjection {
-    Long getId();
+    String getId();
     String getName();
     String getEmail();
 }

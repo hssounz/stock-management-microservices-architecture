@@ -30,6 +30,7 @@ public class OrderRestController {
 
     @GetMapping("/orders/{id}/details")
     public Order getOrder(@PathVariable String id){
+        System.out.println("ORDER ID = " + id);
         Order order = orderRepository.findById(id).orElseThrow(
                 () -> new RuntimeException(String.format("Order %s not found", id))
         );
@@ -41,7 +42,7 @@ public class OrderRestController {
         order.getProductItems().forEach(
                 productItem -> productItem.setProduct(
                         inventoryRestClientService.productById(
-                                productItem.getId()
+                                productItem.getProductId()
                         )
                 )
         );
